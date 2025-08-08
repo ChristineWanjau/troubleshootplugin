@@ -57,7 +57,7 @@ app.get('/api/troubleshooting', (req, res) => {
     } else {
       // Return raw markdown
       res.setHeader('Content-Type', 'text/markdown');
-      res.send(troubleshootingContent);
+      res.send({ data: { troubleshootingContent } });
     }
   } catch (error) {
     console.error('Error serving troubleshooting document:', error);
@@ -114,7 +114,7 @@ app.post('/api/troubleshooting', (req, res) => {
       response.format = 'html';
     }
     
-    res.json(response);
+    res.json({ data: { response } });
     
   } catch (error) {
     console.error('Error processing troubleshooting request:', error);
